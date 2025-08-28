@@ -1,26 +1,19 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-
-// reactive state
-const count = ref(0)
-
-// functions that mutate state and trigger updates
-function increment() {
-  count.value++
-}
-
-// lifecycle hooks
-onMounted(() => {
-  console.log(`The initial count is ${count.value}.`)
-})
+import SideNav from './layouts/SideNav.vue'
+import MainContent from './layouts/MainContent.vue'
 </script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
-
-  <button @click="increment">Count is: {{ count }}</button>
+  <SideNav />
+  <MainContent />
 </template>
+
+<style>
+#app {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(180deg, var(--color-app-bg), #0b0b0b);
+}
+</style>
