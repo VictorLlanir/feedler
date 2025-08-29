@@ -1,6 +1,20 @@
 <script setup lang="ts">
+import { useRoute } from 'vue-router';
 import MenuItem from './components/MenuItem.vue';
+import { ref } from 'vue';
 
+const coreMenus = [
+    { text: 'Hoje', icon: 'sun.svg', link: '/today' },
+    { text: 'Adicionar feeds', icon: 'add.svg', link: '/add-feeds' },
+    { text: 'Buscar', icon: 'search.svg', link: '/search' },
+];
+const feedMenus = [
+    { text: 'Favoritos', icon: 'star.svg', link: '/favorites' },
+    { text: 'Ler mais tarde', icon: 'time.svg', link: '/read-later' },
+    { text: 'Lidos recentemente', icon: 'check.svg', link: '/recently-read' },
+]
+
+const route = useRoute();
 </script>
 
 <template>
@@ -10,7 +24,13 @@ import MenuItem from './components/MenuItem.vue';
         </div>
         <div class="side-nav__menu">
             <ul>
-                <MenuItem text="Hoje" icon="sun.svg" link="today" />
+                <MenuItem v-for="item in coreMenus" :key="item.text" :text="item.text" :icon="item.icon"
+                    :link="item.link" :isActive="item.link === route.path" />
+            </ul>
+            <hr />
+            <ul>
+                <MenuItem v-for="item in feedMenus" :key="item.text" :text="item.text" :icon="item.icon"
+                    :link="item.link" :isActive="item.link === route.path" />
             </ul>
         </div>
     </aside>
@@ -35,5 +55,12 @@ import MenuItem from './components/MenuItem.vue';
 
 .side-nav__menu ul {
     list-style: none;
+}
+
+.side-nav__menu hr {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.075);
+    margin: 10px 0;
+    border: none;
 }
 </style>

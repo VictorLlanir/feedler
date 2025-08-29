@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import SideNav from './layouts/SideNav.vue'
-import MainContent from './layouts/MainContent.vue'
 </script>
 
 <template>
-  <SideNav />
-  <MainContent />
+  <router-view />
 </template>
 
 <style>

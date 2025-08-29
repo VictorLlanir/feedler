@@ -1,6 +1,6 @@
 <template>
     <li class="menu-item">
-        <a class="is-active" :href="link">
+        <a :href="link" :class="{ 'is-active': isActive }">
             <img :src="`/src/assets/icons/${icon}`" :alt="text" />
             <span>{{ text }}</span>
         </a>
@@ -12,6 +12,7 @@ const props = defineProps<{
     text: string;
     icon: string;
     link: string;
+    isActive: boolean;
 }>();
 </script>
 
@@ -24,6 +25,8 @@ const props = defineProps<{
     align-items: center;
     transition: all .14s ease;
     text-decoration: none;
+    margin-bottom: 10px;
+    color: #aaa;
 }
 
 .menu-item a.is-active {

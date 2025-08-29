@@ -1,7 +1,12 @@
 <template>
     <main class="main-content">
-        <h1>Feedler</h1>
+        <router-view />
     </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main-content {
+    padding: 20px;
+    color: #fff;
+}
+</style>
