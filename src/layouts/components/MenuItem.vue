@@ -1,9 +1,9 @@
 <template>
     <li class="menu-item">
-        <a :href="link" :class="{ 'is-active': isActive }">
+        <RouterLink :to="link" :class="{ 'is-active': isActive }">
             <img :src="`/src/assets/icons/${icon}`" :alt="text" />
             <span>{{ text }}</span>
-        </a>
+        </RouterLink>
     </li>
 </template>
 

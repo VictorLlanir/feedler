@@ -1,5 +1,13 @@
+<script setup lang="ts">
+import { useRoute } from 'vue-router';
+import AppHeader from './components/AppHeader.vue';
+
+const route = useRoute();
+</script>
+
 <template>
     <main class="main-content">
+        <AppHeader :title="route.meta.title" />
         <router-view />
     </main>
 </template>
@@ -8,5 +16,6 @@
 .main-content {
     padding: 20px;
     color: #fff;
+    width: 100vw;
 }
 </style>

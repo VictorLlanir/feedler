@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 import MenuItem from './components/MenuItem.vue';
-import { ref } from 'vue';
 
 const coreMenus = [
     { text: 'Hoje', icon: 'sun.svg', link: '/today' },
@@ -20,7 +19,7 @@ const route = useRoute();
 <template>
     <aside class="side-nav">
         <div class="side-nav__header">
-
+            <img src="/src/assets/images/feedler_logo.png" alt="Logo" class="side-nav__logo" />
         </div>
         <div class="side-nav__menu">
             <ul>
@@ -40,9 +39,15 @@ const route = useRoute();
 .side-nav {
     width: 260px;
     height: 100vh;
-    background-color: var(--color-sidenav-bg);
+    background-color: var(--color-almost-dark);
     padding: 20px;
     border-right: 1px solid rgba(255, 255, 255, 0.075);
+}
+
+.side-nav__logo {
+    width: 60%;
+    height: auto;
+    margin-bottom: 20px;
 }
 
 .side-nav__menu {

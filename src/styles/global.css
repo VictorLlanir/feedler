@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
-    --color-sidenav-bg: #161617;
-    --color-app-bg: #0f0f10;
+    --color-almost-dark: #161617;
+    --color-dark: #0f0f10;
+    --color-border: rgba(255, 255, 255, 0.075);
+    --color-secondary-border: rgba(255, 255, 255, 0.25);
+    --color-primary: #FF6600;
+    --color-secondary: #3EB489;
+    --color-tertiary: #F5F5F5;
 }
 
 * {
