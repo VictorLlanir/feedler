@@ -7,7 +7,7 @@ const route = useRoute();
 
 <template>
     <main class="main-content">
-        <AppHeader :title="route.meta.title" />
+        <AppHeader :title="route.meta.title as string" />
         <router-view />
     </main>
 </template>
