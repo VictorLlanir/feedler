@@ -1,8 +1,8 @@
 <template>
     <div class="app-header">
         <div class="app-header__title">
-            <h3>{{ title }}</h3>
-            <small>Posts de todos os feeds para hoje</small>
+            <h3>{{ $route.meta.title }}</h3>
+            <small>{{ $route.meta.subtitle }}</small>
         </div>
         <div class="app-header__actions">
             <input type="text" placeholder="Pesquisar" class="app-header__actions__input" />
@@ -17,9 +17,9 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{
-    title: string;
-}>();
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
 </script>
 
 <style scoped>
@@ -93,5 +93,17 @@ const props = defineProps<{
 .app-header__actions__button:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 768px) {
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .app-header__title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 </style>

@@ -1,11 +1,9 @@
-<script setup lang="ts">
-import { useRoute } from 'vue-router';
-const route = useRoute();
-
-</script>
-
 <template>
     TodayPage works!
 </template>
+
+<script setup lang="ts">
+
+</script>
 
 <style scoped></style>
