@@ -8,6 +8,21 @@
     --color-primary: #FF6600;
     --color-secondary: #3EB489;
     --color-tertiary: #F5F5F5;
+
+    /* Sidebar dimensions */
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 60px;
+    --sidebar-mobile-width: 280px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+
+    /* Z-index layers */
+    --z-sidebar: 1000;
+    --z-overlay: 999;
+    --z-floating-button: 998;
 }
 
 * {

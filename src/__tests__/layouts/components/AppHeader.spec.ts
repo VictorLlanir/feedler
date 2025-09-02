@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import AppHeader from '../../../layouts/components/AppHeader.vue'
 
@@ -80,5 +80,56 @@ describe('AppHeader', () => {
 
         const input = wrapper.find('input')
         expect(input.classes()).toContain('app-header__actions__input')
+    })
+
+    it('deve renderizar botão de menu quando mobile', () => {
+        const wrapper = mount(AppHeader, {
+            props: { title: 'Test' },
+            global: {
+                plugins: [router]
+            }
+        })
+
+        // Simular mobile
+        wrapper.vm.$data.isMobile = true
+
+        const menuButton = wrapper.find('.app-header__menu-toggle')
+        expect(menuButton.exists()).toBe(true)
+    })
+
+    it('não deve renderizar botão de menu quando desktop', () => {
+        const wrapper = mount(AppHeader, {
+            props: { title: 'Test' },
+            global: {
+                plugins: [router]
+            }
+        })
+
+        // Simular desktop
+        wrapper.vm.$data.isMobile = false
+
+        const menuButton = wrapper.find('.app-header__menu-toggle')
+        expect(menuButton.exists()).toBe(false)
+    })
+
+    it('deve chamar toggleSidebar quando botão de menu é clicado', async () => {
+        const wrapper = mount(AppHeader, {
+            props: { title: 'Test' },
+            global: {
+                plugins: [router]
+            }
+        })
+
+        // Simular mobile
+        wrapper.vm.$data.isMobile = true
+
+        const menuButton = wrapper.find('.app-header__menu-toggle')
+
+        // Mock da função toggleSidebar
+        const mockToggleSidebar = vi.fn()
+        wrapper.vm.$data.toggleSidebar = mockToggleSidebar
+
+        await menuButton.trigger('click')
+        expect(mockToggleSidebar).toHaveBeenCalled()
     })
 })

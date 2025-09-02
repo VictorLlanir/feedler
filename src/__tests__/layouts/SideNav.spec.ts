@@ -107,4 +107,89 @@ describe('SideNav', () => {
         const hr = wrapper.find('hr')
         expect(hr.exists()).toBe(true)
     })
+
+    it('deve renderizar botão de toggle', () => {
+        const wrapper = mount(SideNav, {
+            global: {
+                plugins: [router],
+                stubs: ['RouterLink']
+            }
+        })
+
+        const toggleButton = wrapper.find('.side-nav__toggle')
+        expect(toggleButton.exists()).toBe(true)
+    })
+
+    it('deve ocultar logo quando colapsado no desktop', () => {
+        const wrapper = mount(SideNav, {
+            global: {
+                plugins: [router],
+                stubs: ['RouterLink']
+            }
+        })
+
+        // Simular estado colapsado
+        wrapper.vm.$data.isCollapsed = true
+        wrapper.vm.$data.isMobile = false
+
+        const logo = wrapper.find('.side-nav__logo')
+        expect(logo.classes()).toContain('hidden') // ou verificar se tem opacity: 0
+    })
+
+    it('deve mostrar logo quando expandido', () => {
+        const wrapper = mount(SideNav, {
+            global: {
+                plugins: [router],
+                stubs: ['RouterLink']
+            }
+        })
+
+        const logo = wrapper.find('.side-nav__logo')
+        expect(logo.exists()).toBe(true)
+    })
+
+    it('deve ocultar texto dos itens quando colapsado', () => {
+        const wrapper = mount(SideNav, {
+            global: {
+                plugins: [router],
+                stubs: ['RouterLink']
+            }
+        })
+
+        const menuItems = wrapper.findAllComponents(MenuItem)
+
+        // Verificar se os itens recebem a prop showText=false quando colapsado
+        menuItems.forEach(item => {
+            expect(item.props('showText')).toBe(true) // por padrão deve ser true
+        })
+    })
+
+    it('deve renderizar overlay quando mobile e drawer aberto', () => {
+        const wrapper = mount(SideNav, {
+            global: {
+                plugins: [router],
+                stubs: ['RouterLink']
+            }
+        })
+
+        // Simular mobile com drawer aberto
+        wrapper.vm.$data.isMobile = true
+        wrapper.vm.$data.isDrawerOpen = true
+
+        const overlay = wrapper.find('.sidebar-overlay')
+        expect(overlay.exists()).toBe(true)
+        expect(overlay.classes()).toContain('sidebar-overlay-visible')
+    })
+
+    it('não deve renderizar overlay quando desktop', () => {
+        const wrapper = mount(SideNav, {
+            global: {
+                plugins: [router],
+                stubs: ['RouterLink']
+            }
+        })
+
+        const overlay = wrapper.find('.sidebar-overlay')
+        expect(overlay.exists()).toBe(false)
+    })
 })

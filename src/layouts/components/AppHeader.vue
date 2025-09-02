@@ -1,5 +1,10 @@
 <template>
     <div class="app-header">
+        <!-- Botão de menu para mobile -->
+        <button v-if="isMobile" class="app-header__menu-toggle" @click="toggleSidebar" :title="'Abrir menu'">
+            <img :src="`/src/assets/icons/add.svg`" alt="Menu" />
+        </button>
+
         <div class="app-header__title">
             <h3>{{ $route.meta.title }}</h3>
             <small>{{ $route.meta.subtitle }}</small>
@@ -18,8 +23,10 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import { useSidebar } from '@/composables/useSidebar';
 
 const route = useRoute();
+const { isMobile, toggleSidebar } = useSidebar();
 </script>
 
 <style scoped>
@@ -93,6 +100,34 @@ const route = useRoute();
 .app-header__actions__button:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+/* Botão de toggle do menu para mobile */
+.app-header__menu-toggle {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.app-header__menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.app-header__menu-toggle img {
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
 }
 
 @media screen and (max-width: 768px) {
