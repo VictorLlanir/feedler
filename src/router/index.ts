@@ -9,7 +9,7 @@ const router = createRouter({
       redirect: '/today',
       children: [
         {
-          path: 'today', component: () => import('../pages/TodayPage.vue'),
+          path: 'today', component: () => import('../pages/TodayPage/TodayPage.vue'),
           meta: { title: 'Hoje', subtitle: 'Posts de todos os feeds para hoje' }
         },
         {

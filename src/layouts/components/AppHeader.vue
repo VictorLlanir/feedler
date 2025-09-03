@@ -2,7 +2,7 @@
     <div class="app-header">
         <!-- Botão de menu para mobile -->
         <button v-if="isMobile" class="app-header__menu-toggle" @click="toggleSidebar" :title="'Abrir menu'">
-            <img :src="`/src/assets/icons/add.svg`" alt="Menu" />
+            <img :src="`/src/assets/icons/menu-open.svg`" alt="Menu" />
         </button>
 
         <div class="app-header__title">
@@ -15,7 +15,8 @@
                 <img :src="`/src/assets/icons/refresh.svg`" alt="Atualizar" />
             </button>
             <button class="app-header__actions__button">
-                Adicionar feed
+                <img v-if="isMobile" :src="`/src/assets/icons/add.svg`" alt="Adicionar feed" />
+                <span v-if="!isMobile">Adicionar feed</span>
             </button>
         </div>
     </div>
@@ -127,7 +128,6 @@ const { isMobile, toggleSidebar } = useSidebar();
 .app-header__menu-toggle img {
     width: 18px;
     height: 18px;
-    filter: invert(1);
 }
 
 @media screen and (max-width: 768px) {
@@ -139,6 +139,18 @@ const { isMobile, toggleSidebar } = useSidebar();
     .app-header__title {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .app-header__actions__button {
+        display: flex;
+        height: 30px;
+        width: 30px;
+        border-radius: 8px;
+        background-color: var(--color-secondary);
+        border: none;
+        cursor: pointer;
+        transition: all .25s ease;
+        padding: 6px;
     }
 }
 </style>

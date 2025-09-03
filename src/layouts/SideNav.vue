@@ -8,7 +8,8 @@
                 class="side-nav__logo" />
             <button class="side-nav__toggle" @click="toggleSidebar"
                 :title="isCollapsed ? 'Expandir menu' : 'Fechar menu'">
-                <img :src="`/src/assets/icons/${isCollapsed ? 'menu-open.svg' : 'menu-close.svg'}`" alt="Toggle menu" />
+                <img :src="`/src/assets/icons/${isCollapsed ? 'menu-open.svg' : 'menu-close.svg'}`"
+                    alt="Expandir menu" />
             </button>
         </div>
 
@@ -93,7 +94,6 @@ const {
     transform: translateX(-100%);
 }
 
-/* Header do sidebar */
 .side-nav__header {
     display: flex;
     align-items: center;
