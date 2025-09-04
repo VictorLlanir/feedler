@@ -32,6 +32,10 @@ const router = createRouter({
           path: 'recently-read', component: () => import('../pages/RecentlyRead.vue'),
           meta: { title: 'Lidos recentemente', subtitle: 'Posts de feeds lidos recentemente' }
         },
+        {
+          path: 'all-feeds', component: () => import('../pages/AllFeedsPage.vue'),
+          meta: { title: 'Todos os feeds', subtitle: 'Posts de todos os feeds' }
+        }
       ]
     },
     {

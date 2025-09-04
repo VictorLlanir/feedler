@@ -36,6 +36,7 @@ const coreMenus = [
     { text: 'Hoje', icon: 'sun.svg', link: '/today' },
     { text: 'Adicionar feeds', icon: 'add.svg', link: '/add-feeds' },
     { text: 'Buscar', icon: 'search.svg', link: '/search' },
+    { text: 'Todos os feeds', icon: 'list.svg', link: '/all-feeds' },
 ];
 const feedMenus = [
     { text: 'Favoritos', icon: 'star.svg', link: '/favorites' },
